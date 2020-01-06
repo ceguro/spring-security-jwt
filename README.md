@@ -4,21 +4,10 @@ Generate jwt:
 
 curl -X POST \
   http://localhost:9090/authenticate \
-  -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
-  -H 'Cache-Control: no-cache' \
-  -H 'Connection: keep-alive' \
-  -H 'Content-Length: 44' \
   -H 'Content-Type: application/json' \
-  -H 'Cookie: JSESSIONID=85960BA5B863BC0F972C94CDA0FA6A47' \
-  -H 'Host: localhost:9090' \
-  -H 'Postman-Token: 086a78b5-b122-4092-82b8-f140ddb50a3b,35ef94cf-1937-4cc2-a3ec-0fbf29362edd' \
-  -H 'User-Agent: PostmanRuntime/7.20.1' \
+  -H 'Postman-Token: eaf22062-9397-4e44-8d3d-a00e6ded28c2' \
   -H 'cache-control: no-cache' \
-  -d '{
-	"username" : "foo",
-	"password" : "foo"
-}'
+  -d '{ "username" : "foo", "password" : "foo" }'
 
 
 Test endpoint with security jwt:
