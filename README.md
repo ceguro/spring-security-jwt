@@ -1,6 +1,6 @@
 # spring-security-jwt
 
-Generate jwt:
+# Generate jwt:
 
 curl -X POST \
   http://localhost:9090/authenticate \
@@ -10,7 +10,7 @@ curl -X POST \
   -d '{ "username" : "foo", "password" : "foo" }'
 
 
-Test endpoint with security jwt:
+# Test endpoint with security jwt:
 
 
 curl -X GET \
