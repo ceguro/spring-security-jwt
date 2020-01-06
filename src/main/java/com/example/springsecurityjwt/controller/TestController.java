@@ -21,14 +21,18 @@ public class TestController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestController.class);
 
-    @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
     private CustomUserDetailsService userDetailsService;
 
-    @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    public TestController(AuthenticationManager authenticationManager, CustomUserDetailsService userDetailsService, JwtUtil jwtUtil) {
+        this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
+        this.jwtUtil = jwtUtil;
+    }
 
     @GetMapping("/test")
     public ResponseEntity<String> testAuthenticate() {
@@ -36,7 +40,7 @@ public class TestController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) {
+    public ResponseEntity<AuthenticationResponse> doAuthenticationWithToken(@RequestBody AuthenticationRequest authenticationRequest) {
 
         try {
             authenticationManager.
@@ -50,6 +54,7 @@ public class TestController {
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUserName());
         final String jwt = jwtUtil.generateToken(userDetails);
+
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
 
